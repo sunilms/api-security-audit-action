@@ -104,4 +104,5 @@ export interface AuditOptions {
   referer: string;
   userAgent: string;
   apiToken: string;
+  onboardingUrl: string;
 }

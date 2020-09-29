@@ -22,7 +22,7 @@ import { AuditError } from './error';
 import { checkReport } from './checks';
 import { bundle, isOpenAPI } from './parse';
 import { ConfigError, readConfig } from './config';
-import { PLATFORM_URL, ONBOARDING_URL, MAX_NAME_LEN, UUID_REGEX } from './constants';
+import { PLATFORM_URL, MAX_NAME_LEN, UUID_REGEX } from './constants';
 import { getIssues } from './issues';
 
 export function getStats(summary: Summary): [number, number] {
@@ -265,7 +265,9 @@ export async function audit(
     if (err instanceof AuditError) {
       throw err;
     } else if (err instanceof HTTPError && err?.response?.statusCode === 401) {
-      throw new AuditError("Received 'Unauthorized' response to an API call. Check that the API token is correct.");
+      throw new AuditError(
+        `Received 'Unauthorized' response to an API call. Check that the API token is correct. See the config instructions: ${options.onboardingUrl} or contact support@42crunch.com for support.`,
+      );
     } else if (err instanceof ConfigError) {
       throw new AuditError(`Config file error: ${err.message}`);
     } else {

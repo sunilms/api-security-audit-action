@@ -22,6 +22,7 @@ import { uploadSarif } from './upload';
       referer,
       userAgent,
       apiToken,
+      onboardingUrl: 'https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm',
     });
 
     if (uploadToCodeScanning !== 'false') {
