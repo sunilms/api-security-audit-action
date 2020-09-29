@@ -15,8 +15,14 @@ import { uploadSarif } from './upload';
     const minScore = core.getInput('min-score', { required: true });
     const uploadToCodeScanning = core.getInput('upload-to-code-scanning', { required: true });
     const ignoreFailures = core.getInput('ignore-failures', { required: true });
+    const referer = `https://github.com/${process.env['GITHUB_REPOSITORY']}`;
+    const userAgent = `GithubAction-CICD/1.0`;
 
-    const summary = await audit(process.cwd(), apiToken, collectionName, minScore);
+    const summary = await audit(process.cwd(), collectionName, minScore, {
+      referer,
+      userAgent,
+      apiToken,
+    });
 
     if (uploadToCodeScanning !== 'false') {
       core.info('Uploading results to Code Scanning');
