@@ -10,7 +10,7 @@ import { uploadSarif } from './upload';
 
 (async () => {
   try {
-    const apiToken = core.getInput('api-token', { required: true });
+    const apiToken = core.getInput('api-token', { required: false });
     const collectionName = core.getInput('collection-name', { required: true });
     const minScore = core.getInput('min-score', { required: true });
     const uploadToCodeScanning = core.getInput('upload-to-code-scanning', { required: true });
