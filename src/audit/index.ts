@@ -266,7 +266,7 @@ export async function audit(
       throw err;
     } else if (err instanceof HTTPError && err?.response?.statusCode === 401) {
       throw new AuditError(
-        `Received 'Unauthorized' response to an API call. Check that the API token is correct. See the config instructions: ${options.onboardingUrl} or contact support@42crunch.com for support.`,
+        `Received 'Unauthorized' response to an API call. Check that the API token is correct. See the config instructions here ${options.onboardingUrl} or contact support@42crunch.com for support.`,
       );
     } else if (err instanceof ConfigError) {
       throw new AuditError(`Config file error: ${err.message}`);
