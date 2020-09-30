@@ -119,7 +119,7 @@ async function discoverOpenApiFiles(rootDir: string, discoveryPatterns: any, map
 }
 
 function makeName(filename: string) {
-  return filename.replace(/[^A-Za-z0-9_\\-\\.\\ ]/g, '-').substring(0, MAX_NAME_LEN);
+  return filename.replace(/[^A-Za-z0-9_\-\.\ ]/g, '-').substring(0, MAX_NAME_LEN);
 }
 
 async function findOpenapiFiles(rootDir: string, patterns: string[]) {
