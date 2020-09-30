@@ -42,6 +42,7 @@ import { uploadSarif } from './upload';
       core.info('Configued to ignore failures');
     }
   } catch (ex) {
+    console.error(ex.stack);
     core.setFailed(`Error: ${ex.message} ${(ex?.code || '', ex?.response?.body || '')}`);
   }
 })();
